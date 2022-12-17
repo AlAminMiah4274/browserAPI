@@ -1,3 +1,4 @@
+// step: 2
 const getInputValueById = id => {
     const inputField = document.getElementById(id);
     const inputValue = inputField.value;
@@ -5,10 +6,10 @@ const getInputValueById = id => {
     return inputValue;
 }
 
+// step: 1
 const addProduct = () => {
     const product = getInputValueById('product-name-field');
     const quantity = getInputValueById('product-quantity-field');
-    console.log(product, quantity);
     // display on UI
     addProductToDisplay(product, quantity);
 
@@ -20,6 +21,7 @@ const addProduct = () => {
     saveItemToLocalStorage(product, quantity);
 }
 
+// step: 5
 const getShoppingCartFromLocalStorage = () => {
     let savedCart = localStorage.getItem('cart');
     let cart = {};
@@ -29,6 +31,7 @@ const getShoppingCartFromLocalStorage = () => {
     return cart;
 }
 
+// step: 4
 const saveItemToLocalStorage = (product, quantity) => {
     const cart = getShoppingCartFromLocalStorage();
 
@@ -40,7 +43,7 @@ const saveItemToLocalStorage = (product, quantity) => {
     localStorage.setItem('cart', cartStringified);
 }
 
-// UI dispaly function
+// step : 3, UI dispaly function
 const addProductToDisplay = (product, quantity) => {
     const productContainer = document.getElementById('product-container');
     const li = document.createElement('li');
@@ -48,7 +51,7 @@ const addProductToDisplay = (product, quantity) => {
     productContainer.appendChild(li);
 }
 
-// show product on UI from local storage:
+// setp: 6, show product on UI from local storage:
 const displayStoredProducts = () => {
     const cart = getShoppingCartFromLocalStorage();
     for (const product in cart) {
