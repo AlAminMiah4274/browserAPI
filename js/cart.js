@@ -34,7 +34,7 @@ const saveItemToLocalStorage = (product, quantity) => {
 
     // add product to the object as property
     cart[product] = quantity;
-    const cartStringified = JSON.parse(cart);
+    const cartStringified = JSON.stringify(cart);
 
     // save to local storage
     localStorage.setItem('cart', cartStringified);
