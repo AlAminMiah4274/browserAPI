@@ -20,14 +20,6 @@ const addProduct = () => {
     saveItemToLocalStorage(product, quantity);
 }
 
-// UI dispaly function
-const displayProducts = (product, quantity) => {
-    const productContainer = document.getElementById('product-container');
-    const li = document.createElement('li');
-    li.innerText = `${product} : ${quantity}`;
-    productContainer.appendChild(li);
-}
-
 const getShoppingCartFromLocalStorage = () => {
     let savedCart = localStorage.getItem('cart');
     let cart = {};
@@ -42,8 +34,16 @@ const saveItemToLocalStorage = (product, quantity) => {
 
     // add product to the object as property
     cart[product] = quantity;
-    const cartStringified = JSON.stringify(cart);
+    const cartStringified = JSON.parse(cart);
 
     // save to local storage
     localStorage.setItem('cart', cartStringified);
+}
+
+// UI dispaly function
+const displayProducts = (product, quantity) => {
+    const productContainer = document.getElementById('product-container');
+    const li = document.createElement('li');
+    li.innerText = `${product} : ${quantity}`;
+    productContainer.appendChild(li);
 }
