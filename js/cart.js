@@ -10,7 +10,7 @@ const addProduct = () => {
     const quantity = getInputValueById('product-quantity-field');
     console.log(product, quantity);
     // display on UI
-    displayProducts(product, quantity);
+    addProductToDisplay(product, quantity);
 
     // set to local storage
     // simple way
@@ -41,9 +41,19 @@ const saveItemToLocalStorage = (product, quantity) => {
 }
 
 // UI dispaly function
-const displayProducts = (product, quantity) => {
+const addProductToDisplay = (product, quantity) => {
     const productContainer = document.getElementById('product-container');
     const li = document.createElement('li');
     li.innerText = `${product} : ${quantity}`;
     productContainer.appendChild(li);
 }
+
+// show product on UI from local storage:
+const displayStoredProducts = () => {
+    const cart = getShoppingCartFromLocalStorage();
+    for (const product in cart) {
+        const quantity = cart[product];
+        addProductToDisplay(product, quantity);
+    }
+}
+displayStoredProducts();
