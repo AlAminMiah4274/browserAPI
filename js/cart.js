@@ -14,7 +14,10 @@ const addProduct = () => {
 
     // set to local storage
     // simple way
-    localStorage.setItem(product, quantity);
+    // localStorage.setItem(product, quantity);
+
+    // actual way
+    saveItemToLocalStorage(product, quantity);
 }
 
 // UI dispaly function
@@ -35,5 +38,12 @@ const getShoppingCartFromLocalStorage = () => {
 }
 
 const saveItemToLocalStorage = (product, quantity) => {
+    const cart = getShoppingCartFromLocalStorage();
 
+    // add product to the object as property
+    cart[product] = quantity;
+    const cartStringified = JSON.stringify(cart);
+
+    // save to local storage
+    localStorage.setItem('cart', cartStringified);
 }
